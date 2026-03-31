@@ -106,7 +106,7 @@ const App: React.FC = () => {
 
   const handleResetStorage = () => {
     const confirmed = window.confirm(
-      "북마크와 처방 기록을 모두 삭제할까요?\n이 작업은 되돌릴 수 없습니다."
+      "북마크와 서재 기록을 모두 삭제할까요?\n이 작업은 되돌릴 수 없습니다."
     );
 
     if (!confirmed) return;
@@ -146,7 +146,7 @@ const App: React.FC = () => {
       setAppState(AppState.PRESCRIBED);
     } catch (err) {
       console.error(err);
-      setError("죄송합니다. 처방을 생성하는 도중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+      setError("죄송합니다. 추천을 생성하는 도중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.");
       setAppState(AppState.ERROR);
     }
   };
@@ -258,7 +258,7 @@ const App: React.FC = () => {
                       type="submit"
                       disabled={!input.trim()}
                       className="absolute right-4 bottom-4 bg-ink-900 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-ink-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg active:scale-95"
-                      aria-label="처방 요청 보내기"
+                      aria-label="기록 제출하기"
                     >
                       <Send className="w-4 h-4 ml-0.5" />
                     </button>
@@ -321,7 +321,7 @@ const App: React.FC = () => {
                 >
                   <h3 className="font-serif text-lg text-ink-900 flex items-center gap-2">
                     <Clock3 className="w-4 h-4" />
-                    저장된 처방
+                    서재 기록
                     <span className="text-sm font-sans text-ink-800/50">
                       ({savedPrescriptions.length})
                     </span>
@@ -338,7 +338,7 @@ const App: React.FC = () => {
                     <div className="pt-4">
                       {savedPrescriptions.length === 0 ? (
                         <p className="text-sm text-ink-800/60">
-                          아직 저장된 처방이 없습니다.
+                          아직 저장된 기록이 없습니다.
                         </p>
                       ) : (
                         <div className="space-y-3">
@@ -433,9 +433,9 @@ const App: React.FC = () => {
           <div className="flex flex-col items-center justify-center py-20 animate-pulse">
             <div className="w-16 h-16 border-4 border-paper-200 border-t-ink-900 rounded-full animate-spin mb-6"></div>
             <h2 className="text-xl font-serif text-ink-900 mb-2">
-              당신의 마음을 읽고 있습니다...
+              마음을 읽고 있습니다...
             </h2>
-            <p className="text-ink-800/60">적절한 문장을 고르는 중입니다.</p>
+            <p className="text-ink-800/60">서가에서 책을 고르는 중입니다.</p>
           </div>
         )}
 
@@ -463,7 +463,7 @@ const App: React.FC = () => {
       </main>
 
       <footer className="py-6 text-center text-ink-800/40 text-xs border-t border-paper-200 mt-auto px-4">
-        <p>© 2026 Paper Pharmacy. Powered by Google Gemini.</p>
+        <p>© 2026 마음서재 by lou. Powered by Google Gemini.</p>
         <p className="mt-1">
           본 서비스는 의료행위가 아니며, 심각한 심리적 고통이나 위기 상황에서는 전문기관의 도움을 받으세요.
         </p>
