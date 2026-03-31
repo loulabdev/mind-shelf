@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Header } from "./components/Header";
-import { PrescriptionView } from "./components/PrescriptionView";
+import PrescriptionView from "./components/PrescriptionView";
 import { getPrescription } from "./services/geminiService";
 import {
   deleteSavedPrescription,
@@ -466,7 +466,7 @@ const App: React.FC = () => {
         <p>© 2026 마음서재 by lou. Powered by Google Gemini.</p>
         <p className="mt-1">
           본 서비스는 의료행위가 아니며, 심각한 심리적 고통이나 위기 상황에서는 전문기관의 도움을 받으세요.
-        </p>
+        </p>``
       </footer>
     </div>
   );
