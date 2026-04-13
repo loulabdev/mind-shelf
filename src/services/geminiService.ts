@@ -370,11 +370,14 @@ export const getPrescription = async (
 
     return validateAndNormalizePrescription(parsed);
   } catch (error: unknown) {
-    console.error("Error fetching prescription:", error);
+   const msg = error instanceof Error 
+    ? error.message 
+    : JSON.stringify(error);
+  
+  console.error("GEMINI_ERROR:", msg);
 
-    // 503 → 사용자 친화적 커스텀 에러로 변환
-    if (is503Error(error)) throw new GeminiUnavailableError();
-
-    throw error;
-  }
+  if (is503Error(error)) throw new GeminiUnavailableError();
+  
+  throw new Error("GEMINI_ERROR: " + msg);
+}
 };
