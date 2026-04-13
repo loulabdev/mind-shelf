@@ -236,9 +236,7 @@ const App: React.FC = () => {
   );
 }
 
-if (appState === AppState.IDLE) {
-  return (
-  
+
   if (appState === AppState.IDLE) {
     return (
       <div
