@@ -160,9 +160,10 @@ const App: React.FC = () => {
       setAppState(AppState.PRESCRIBED);
     } catch (err) {
       console.error(err);
-      setError("죄송합니다. 추천을 생성하는 도중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+      const msg = err instanceof Error ? err.message : JSON.stringify(err);
+      setError("오류: " + msg);
       setAppState(AppState.ERROR);
-    }
+    }  
   };
 
   const handleReset = () => {
@@ -221,6 +222,23 @@ const App: React.FC = () => {
   };
 
   // ── IDLE ──────────────────────────────────────────────────────────────────
+  if (appState === AppState.ERROR) {
+  return (
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: BG, fontFamily: F, padding: "24px" }}>
+      <div style={{ background: "#fff8f0", border: "1px solid #c87a3a", borderRadius: "8px", padding: "20px", maxWidth: "480px", width: "100%", color: "#8b4513", fontSize: "13px", whiteSpace: "pre-wrap", wordBreak: "break-all" }}>
+        <div style={{ fontWeight: "bold", marginBottom: "12px" }}>⚠️ 오류 상세</div>
+        <div>{error}</div>
+        <button onClick={handleReset} style={{ marginTop: "16px", padding: "8px 20px", background: "#5a7a5a", color: "#fff", border: "none", borderRadius: "6px", cursor: "pointer", fontFamily: F }}>
+          처음으로
+        </button>
+      </div>
+    </div>
+  );
+}
+
+if (appState === AppState.IDLE) {
+  return (
+  
   if (appState === AppState.IDLE) {
     return (
       <div
