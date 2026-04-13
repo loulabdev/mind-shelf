@@ -238,7 +238,6 @@ const App: React.FC = () => {
 
 
   if (appState === AppState.IDLE) {
-    return (
       <div
         style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: BG, fontFamily: F }}
         onClick={handleOutsideClick}
