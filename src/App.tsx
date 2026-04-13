@@ -604,17 +604,19 @@ const App: React.FC = () => {
     );
   }
 
-  // ── ERROR ─────────────────────────────────────────────────────────────────
-  return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px", background: BG, fontFamily: F }}>
-      <div style={{ maxWidth: 400, width: "100%", textAlign: "center", padding: "32px", borderRadius: 16, background: PAGE2, border: "1px solid rgba(180,80,60,0.2)", boxShadow: "0 6px 18px rgba(0,0,0,0.06)" }}>
-        <p style={{ fontFamily: GB_FONT, fontSize: 13.5, color: "#7a3020", marginBottom: 20, lineHeight: 1.7 }}>{error}</p>
-        <button type="button" onClick={() => setAppState(AppState.IDLE)} style={{ fontFamily: F, fontSize: 12, color: GREEN_DARK, background: "none", border: "none", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: 3 }}>
-          다시 시도하기
-        </button>
+   // ── ERROR ─────────────────────────────────────────────────────────────────
+  if (appState === AppState.ERROR) {
+    return (
+      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 16px", background: BG, fontFamily: F }}>
+        <div style={{ maxWidth: 400, width: "100%", textAlign: "center", padding: "32px", borderRadius: 16, background: PAGE2, border: "1px solid rgba(180,80,60,0.2)", boxShadow: "0 6px 18px rgba(0,0,0,0.06)" }}>
+          <p style={{ fontFamily: GB_FONT, fontSize: 13.5, color: "#7a3020", marginBottom: 20, lineHeight: 1.7 }}>{error}</p>
+          <button type="button" onClick={() => setAppState(AppState.IDLE)} style={{ fontFamily: F, fontSize: 12, color: GREEN_DARK, background: "none", border: "none", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: 3 }}>
+            다시 시도하기
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return null;
 };
-
 export default App;
